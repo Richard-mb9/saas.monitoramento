@@ -1,0 +1,82 @@
+[
+  {
+    "chaveCompra": {
+      "idUasgIdentificacao": 986001,
+      "idModalidade": 6,
+      "numero": 952,
+      "ano": 2025,
+      "numeroUasg": 986001
+    },
+    "identificadorItem": "1",
+    "chaveMensagemNaOrigem": "489f667c-4cd9-446d-a554-4a234e949dbb",
+    "texto": "Ok, \u00f3timo\n dia.",
+    "categoria": "14",
+    "dataHora": "2026-01-02 10:01:21.154",
+    "tipoRemetente": "1",
+    "identificadorRemetente": "22192052000140"
+  },
+  {
+    "chaveCompra": {
+      "idUasgIdentificacao": 986001,
+      "idModalidade": 6,
+      "numero": 952,
+      "ano": 2025,
+      "numeroUasg": 986001
+    },
+    "identificadorItem": "1",
+    "chaveMensagemNaOrigem": "49f52641-73ca-4842-a602-b4424771556d",
+    "texto": "Prezado Fornecedor, prazo para envio de anexos expirado em 30/12/2025.",
+    "categoria": "9",
+    "dataHora": "2026-01-02 09:44:45.493",
+    "identificadorDestinatario": "22192052000140",
+    "tipoRemetente": "3"
+  },
+  {
+    "chaveCompra": {
+      "idUasgIdentificacao": 986001,
+      "idModalidade": 6,
+      "numero": 952,
+      "ano": 2025,
+      "numeroUasg": 986001
+    },
+    "identificadorItem": "1",
+    "chaveMensagemNaOrigem": "cea43af5-f0ae-4284-8eed-d235c20d752f",
+    "texto": "Bom dia, favor abrir o anexo para poder enviar a proposta.",
+    "categoria": "14",
+    "dataHora": "2026-01-02 09:34:46.555",
+    "tipoRemetente": "1",
+    "identificadorRemetente": "22192052000140"
+  },
+  {
+    "chaveCompra": {
+      "idUasgIdentificacao": 986001,
+      "idModalidade": 6,
+      "numero": 952,
+      "ano": 2025,
+      "numeroUasg": 986001
+    },
+    "identificadorItem": "1",
+    "chaveMensagemNaOrigem": "1bfc2ae0-6e17-49d2-bd9a-d09a2e44312b",
+    "texto": "Prezado(a) Pregoeiro(a), conforme solicitado, enviamos em anexo um aditivo do cat\u00e1logo, qualquer d\u00favida estamos \u00e0 disposi\u00e7\u00e3o!",
+    "categoria": "14",
+    "dataHora": "2025-12-31 08:57:50.214",
+    "tipoRemetente": "1",
+    "identificadorRemetente": "43431371000130"
+  },
+  {
+    "chaveCompra": {
+      "idUasgIdentificacao": 986001,
+      "idModalidade": 6,
+      "numero": 952,
+      "ano": 2025,
+      "numeroUasg": 986001
+    },
+    "identificadorItem": "1",
+    "chaveMensagemNaOrigem": "19802b87-5cbb-42ab-a514-0e7a51aafa80",
+    "texto": "O item 1 teve a convoca\u00e7\u00e3o para envio de anexos encerrada \u00e0s 08:57:47 de 31/12/2025. 1 anexo foi enviado pelo fornecedor DLS COMERCIO LTDA, CNPJ 43.431.371/0001-30.",
+    "categoria": "13",
+    "dataHora": "2025-12-31 08:57:47.040",
+    "tipoRemetente": "1",
+    "identificadorRemetente": "43431371000130"
+  }
+]

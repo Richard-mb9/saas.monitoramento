@@ -1,0 +1,4 @@
+# pyright: reportUnusedImport=false
+from .repository_manager_interface import RepositoryManagerInterface
+from .message_repository_interface import MessageRepositoryInterface
+from .chave_compra_repository_interface import ChaveCompraRepositoryInterface
