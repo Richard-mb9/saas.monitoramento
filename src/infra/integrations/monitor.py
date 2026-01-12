@@ -1,5 +1,4 @@
 import asyncio
-from asyncio import sleep
 from asyncio import wait_for, Future
 from typing import Dict, Any, Optional, List
 from playwright.async_api import async_playwright, Response, Browser, Page, Locator
