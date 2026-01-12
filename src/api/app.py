@@ -5,8 +5,9 @@ from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 
-# from infra.mappers import import_mappers
+from infra.mappers import import_mappers
 from application.exceptions.application_exceptions import APIError
+
 
 # from config import ENVIRONMENT
 from .routers import create_routes
@@ -19,7 +20,7 @@ API_VERSION = "V1.0.0"
 
 
 def create_app():
-    # import_mappers()
+    import_mappers()
     api = FastAPI(
         # root_path=f"/{ENVIRONMENT}",
         title="Chat Monitor Service",

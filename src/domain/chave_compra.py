@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from uuid import UUID
 
 
-@dataclass(frozen=True)
+@dataclass
 class ChaveCompra:
     id_message: UUID
     id_uasg_identificacao: int

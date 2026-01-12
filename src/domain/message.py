@@ -31,7 +31,8 @@ class Message:
         self.cnpj_rementente = cnpj_remetente
         self.cnpj_destinatario = cnpj_destinatario
 
-    def obter_tipo_remetente(self, id_tipo_rementente: int) -> TIPO_REMETENTE:
+    @staticmethod
+    def obter_tipo_remetente(id_tipo_rementente: int) -> TIPO_REMETENTE:
         users: Dict[str, TIPO_REMETENTE] = {
             "0": "SISTEMA",
             "1": "USUARIO_FORNECEDOR",

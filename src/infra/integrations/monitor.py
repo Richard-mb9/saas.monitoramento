@@ -44,7 +44,7 @@ class Monitor(MonitorInterface):
         try:
             print(f"navegando para url: {url}")
             await page.goto(url)
-            await sleep(10)
+            await page.wait_for_timeout(2000)
             print("listando mensagens")
             element: Locator = (
                 page.get_by_label("Mensagens da compra").filter(visible=True).first
