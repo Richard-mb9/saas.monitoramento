@@ -1,6 +1,7 @@
 from infra.integrations import Monitor
 from infra.database_manager import DatabaseManagerConnection
 from infra.repositories import RepositoryManager
+from infra.rabbitmq.rabbitmq_publisher import RabbitMQPublisher
 from application.exceptions import BadRequestError
 
 
@@ -12,6 +13,7 @@ class MonitorManagerUseCase:
         self.monitors: dict[str, ChatMonitorUseCase] = {}
         self.db_manager = DatabaseManagerConnection()
         self._repository_manager = RepositoryManager(self.db_manager)
+        self._publisher = RabbitMQPublisher()
 
     def start(self, chat_id: str):
         if chat_id in self.monitors:
@@ -22,6 +24,7 @@ class MonitorManagerUseCase:
             chat_id=chat_id,
             monitor=chat_monitor,
             repository_manager=self._repository_manager,
+            publisher=self._publisher,
         )
         monitor.start()
         self.monitors[chat_id] = monitor

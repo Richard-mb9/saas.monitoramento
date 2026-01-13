@@ -2,7 +2,7 @@ from typing import Optional, Any, Dict
 from uuid import UUID
 from asyncio import sleep, CancelledError, Event, Task, create_task, gather
 
-from application.interfaces import MonitorInterface
+from application.interfaces import MonitorInterface, PublisherInterface
 from application.interfaces.repositories import RepositoryManagerInterface
 
 from domain import ChaveCompra, Message
@@ -14,6 +14,7 @@ class ChatMonitorUseCase:
         chat_id: str,
         monitor: MonitorInterface,
         repository_manager: RepositoryManagerInterface,
+        publisher: PublisherInterface,
     ):
         self.chat_id = chat_id
         self._stop_event = Event()
@@ -21,6 +22,7 @@ class ChatMonitorUseCase:
         self._monitor = monitor
         self._message_repository = repository_manager.message_repository()
         self._chave_compra_repository = repository_manager.chave_compra_repository()
+        self._publisher = publisher
 
     async def run(self):
         print(f"Monitor iniciado: {self.chat_id}")
@@ -69,6 +71,8 @@ class ChatMonitorUseCase:
 
         self._message_repository.insert(message)
         self._chave_compra_repository.insert(chave_compra)
+
+        self._publisher.publish_new_message(id_message)
 
     def __build_chave_compra_entity(
         self, id_message: UUID, chave_compra: Dict[str, int]

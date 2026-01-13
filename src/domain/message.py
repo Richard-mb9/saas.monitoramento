@@ -19,6 +19,7 @@ class Message:
         texto: str,
         categoria: str,
         data_hora: datetime,
+        created_at: Optional[datetime] = None,
         cnpj_remetente: Optional[str] = None,  # identificadorRemetente
         cnpj_destinatario: Optional[str] = None,  # identificadorDestinatario
     ) -> None:
@@ -30,6 +31,7 @@ class Message:
         self.data_hora = data_hora
         self.cnpj_rementente = cnpj_remetente
         self.cnpj_destinatario = cnpj_destinatario
+        self.created_at = created_at if created_at is not None else datetime.now()
 
     @staticmethod
     def obter_tipo_remetente(id_tipo_rementente: int) -> TIPO_REMETENTE:
