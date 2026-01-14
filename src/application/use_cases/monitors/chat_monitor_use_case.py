@@ -7,6 +7,8 @@ from application.interfaces.repositories import RepositoryManagerInterface
 
 from domain import ChaveCompra, Message
 
+from shared import logger, set_chat_id
+
 
 class ChatMonitorUseCase:
     def __init__(
@@ -16,6 +18,7 @@ class ChatMonitorUseCase:
         repository_manager: RepositoryManagerInterface,
         publisher: PublisherInterface,
     ):
+        set_chat_id(chat_id)
         self.chat_id = chat_id
         self._stop_event = Event()
         self._task: Optional[Task[Any]] = None
@@ -25,19 +28,19 @@ class ChatMonitorUseCase:
         self._publisher = publisher
 
     async def run(self):
-        print(f"Monitor iniciado: {self.chat_id}")
+        logger.info("Monitor iniciado")
         try:
             while not self._stop_event.is_set():
                 await self.check_chat()
-                await sleep(30)
+                await sleep(50)
         except CancelledError:
             pass
         finally:
-            print(f"Monitor finalizado: {self.chat_id}")
+            logger.info("Monitor finalizado")
 
     async def check_chat(self):
         try:
-            print(f"Verificando chat {self.chat_id}")
+            logger.info("Verificando chat")
             messages = await self._monitor.get_messages(self.chat_id)
             for msg in messages:
                 message_in_db = self._message_repository.find_by_id(
@@ -47,7 +50,7 @@ class ChatMonitorUseCase:
                     self.__save_message(msg)
 
         except Exception as error:
-            print("Houve um erro ao obter as mensagesns", error.args)
+            logger.error("Houve um erro ao obter as mensagesns: %s", error.args)
 
     def start(self):
         if self._task and not self._task.done():
