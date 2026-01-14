@@ -1,2 +1,2 @@
 # pyright: reportUnusedImport=false
-from .logbash import logger, set_chat_id
+from .logbash import LOG, set_chat_id

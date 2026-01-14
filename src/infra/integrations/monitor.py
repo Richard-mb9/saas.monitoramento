@@ -12,7 +12,7 @@ from playwright.async_api import (
 from playwright_stealth import Stealth  # type: ignore
 
 from application.interfaces import MonitorInterface
-from shared import logger
+from shared import LOG
 
 URL_MENSAGENS = "https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-mensagem/v2/chat"
 
@@ -37,21 +37,21 @@ class Monitor(MonitorInterface):
             url = f"{base_url}/comprasnet-web/public/compras/acompanhamento-compra{url_params}"
 
             await self.__acess_page(page=page, url=url)
-            logger.info("Fim da listagem")
+            LOG.info("Fim da listagem")
             resultado = await wait_for(self._future_response, timeout=10)
             return resultado
 
     async def close(self):
         if self.browser is not None:
             await self.browser.close()
-        logger.info("browser finalizado")
+        LOG.info("browser finalizado")
 
     async def __acess_page(self, url: str, page: Page):
         try:
-            logger.info("navegando para url: %s", url)
+            LOG.info("navegando para url: %s", url)
             await page.goto(url)
             await page.wait_for_timeout(3000)
-            logger.info("listando mensagens")
+            LOG.info("listando mensagens")
             element: Locator = (
                 page.get_by_label("Mensagens da compra").filter(visible=True).first
             )
@@ -60,11 +60,11 @@ class Monitor(MonitorInterface):
             await element.click()
             await page.wait_for_timeout(3000)
         except PlaywrightTimeoutError as error:
-            logger.error("Houve um erro para carregar todos os dados da pagina")
+            LOG.error("Houve um erro para carregar todos os dados da pagina")
             if self._future_response and not self._future_response.done():
                 self._future_response.set_exception(error)
         except Exception as error:
-            logger.error(error)
+            LOG.error(error)
         finally:
             await self.close()
 
@@ -75,5 +75,5 @@ class Monitor(MonitorInterface):
                     data = await response.json()
                     self._future_response.set_result(data)
                 except Exception as e:
-                    logger.error("Erro ao parsear JSON: %s", e)
+                    LOG.error("Erro ao parsear JSON: %s", e)
                     self._future_response.set_exception(e)

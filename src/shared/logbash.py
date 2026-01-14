@@ -21,9 +21,10 @@ def get_chat_id():
 
 
 logging.setLogRecordFactory(record_factory)
-logger = logging.getLogger(__name__)
 logging.basicConfig(
     level=logging.INFO,
     format="[%(asctime)s] [%(chat_id)s] %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
 )
+
+LOG = logging.getLogger(__name__)
